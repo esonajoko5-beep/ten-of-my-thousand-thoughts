@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something For You ♡</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 18px;
+    min-height: 100vh;
+    background: #f8f3ee;
+    color: #55433f;
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+    padding: 45px 25px;
+}
+
+.heart {
+    color: #d99a9a;
+    font-size: 30px;
+    animation: heartbeat 1.8s infinite;
+}
+
+h1 {
+    font-size: 27px;
+    font-weight: normal;
+    margin: 20px 0 12px;
+}
+
+.subtitle {
+    color: #a28c84;
+    font-size: 14px;
+    margin-bottom: 35px;
+}
+
+button {
+    background: #e9ceca;
+    color: #604b47;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #dfbfba;
+}
+
+#letter {
+    display: none;
+    margin-top: 45px;
+    text-align: left;
+}
+
+.paragraph {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 1s ease, transform 1s ease;
+    line-height: 1.9;
+    font-size: 16px;
+    margin-bottom: 28px;
+}
+
+.paragraph.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.closing {
+    text-align: center;
+    font-size: 22px;
+    color: #bd8585;
+    margin-top: 45px;
+    font-style: italic;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="heart">♡</div>
+
+    <h1>A Little Something For You</h1>
+    <p class="subtitle">Something I wanted you to have.</p>
+
+    <button onclick="openLetter()">Open your letter ♡</button>
+
+    <div id="letter">
+
+        <p class="paragraph">
+            I’m writing this yes with a saddened heart, but with ease because it is with an intention to put a smile in your face, because nothing to me matters more than seeing you smile. You have no idea how much you meant to me, and I can write a thousand paragraphs describing and explaining but it will never be equivalent to what truly lives inside my head, what I truly want to say with no words to put it.
+        </p>
+
+        <p class="paragraph">
+            You changed me a lot, and for the better, it took me quite a while to realise. You came into my life and you reminded me of the person I used to be, the one who understood that there was more to life than the mere act of living it. The one who knew that happiness was not a responsibility to be outsourced to another person, but something that could be cultivated within oneself and shared with another without losing ownership of it.
+        </p>
+
+        <p class="paragraph">
+            You gave me room to be myself, not the carefully constructed version of myself that knows what to say, what to conceal, and when to retreat, but the person who exists beneath all that calculation. The person who can feel without immediately interrogating the feeling, who can speak without rehearsing every possible consequence, and who can love without constantly searching for evidence that she ought not to.
+        </p>
+
+        <p class="paragraph">
+            And maybe that is one of the greatest gifts you have given me, you gave me love that I doubted that I deserved, made me feel appreciated and seen without feeling like there’s a price to be paid behind it, the opportunity to exist without constantly defending my existence.
+        </p>
+
+        <p class="paragraph">
+            But I would be dishonest if I made you the hero of a story in which you have never been anything but good to me. Yes we had our ups, our downs, but all that we went through together is what defined “us” and what made our relationship special.
+        </p>
+
+        <p class="paragraph">
+            You are the greatest thing that happened to me this year, and I’m grateful for every moment we had together, every conversation, every long ass call, every laughter, every smile, every fight, every silent moment, every bump, because without any of those I wouldn’t have something to look back to and cherish.
+        </p>
+
+        <p class="paragraph">
+            I hope you know that I love you, I’ll love you even more tomorrow, and the day after , and the day after that, and the day after that.
+        </p>
+
+        <p class="paragraph closing">
+            Again, I love you.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+function openLetter() {
+    const letter = document.getElementById("letter");
+    const button = document.querySelector("button");
+
+    letter.style.display = "block";
+    button.style.display = "none";
+
+    const paragraphs = document.querySelectorAll(".paragraph");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    paragraphs.forEach(paragraph => {
+        observer.observe(paragraph);
+    });
+}
+</script>
+
+</body>
+</html>
